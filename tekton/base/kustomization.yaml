@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- https://raw.githubusercontent.com/tektoncd/catalog/main/task/npm/0.1/npm.yaml
+- build-bot.ServiceAccount.yaml
+- create-configuration.Task.yaml
+- deploy.Task.yaml
+- git-credentials.Secret.yaml
+- nodejs.Pipeline.yaml
+- production-repository.ConfigMap.yaml
+- quay-io-credentials.Secret.yaml
+- save-configuration.Task.yaml
+- webhook-receiver.EventListener.yaml
