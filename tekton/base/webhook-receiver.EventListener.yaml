@@ -47,7 +47,7 @@ spec:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
-        generateName: postgresql-app-
+        generateName: backend-
       spec:
         serviceAccountName: build-bot
         params:
