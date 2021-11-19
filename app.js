@@ -6,7 +6,18 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes');
 var usersRouter = require('./routes/users');
-var featureRouter = require('./routes/feature');
+var testRouter = require('./routes/test');
+
+const value = Math.round(Math.random() * 100)
+
+const knex = require('./config/db')
+knex('test').delete().then(() => {
+  knex('test').insert({ value }).then(() => {
+    knex('test').select('value').then((rows) => {
+      console.log({ rows })
+    })
+  })
+})
 
 var app = express();
 
@@ -22,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/feature', featureRouter);
+app.use('/test', testRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
